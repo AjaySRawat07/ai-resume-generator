@@ -1,8 +1,9 @@
 
-#AI-Powered Resume
+# AI-Powered Resume
+
 An intuitive and modern application to create, edit, and store professional resumes with AI assistance. Built using Next.js, TypeScript, Tailwind CSS, and Prisma.
 
-#Features
+## Features
 
 *Dynamic Resume Builder: Build, customize, and update your resume seamlessly.
 *AI Assistance: Get intelligent suggestions for skills, experiences, and layout improvements.
@@ -10,7 +11,7 @@ An intuitive and modern application to create, edit, and store professional resu
 *Responsive Design: Optimized for all devices with Tailwind CSS.
 *Persistent Storage: Securely save and manage your resume data using Prisma.
 
-#Tech Stack
+## Tech Stack
 
 *Next.js: Powerful framework for server-side rendering and static generation.
 *TypeScript: Ensures robust and maintainable code.
