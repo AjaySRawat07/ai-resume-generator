@@ -14,7 +14,7 @@ A sleek AI-powered resume application built using modern technologies such as **
 - **Tailwind CSS**: For fast and responsive UI development.
 - **Prisma**: Simplifies database operations and management.
 
-## ai-resumebuddy.netlify.app/
+## Link -> https://ai-resumebuddy.netlify.app/
 
 ![image](https://github.com/user-attachments/assets/9eade5af-c917-4ad3-add2-c7dd08c0aec9)
 ![image](https://github.com/user-attachments/assets/7b927ded-916d-4e13-b48d-0d6d1fa48602)
