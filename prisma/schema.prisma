@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// prisma/schema.prisma
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+}
+
+
+model User {
+  id            String    @id @default(uuid())
+  clerkUserId   String    @unique // clerk user id
+  email         String    @unique
+  name          String?
+  imageUrl      String?
+  resumes       Resume[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@map("users") //database name for the table
+}
+
+model Resume {
+  id    String @id @default(cuid())
+  userId   String 
+
+  title    String?  @default("Untitled")
+  description  String?
+
+  photoUrl   String?
+  colorHex   String @default("#000000")
+  boarderStyle  String @default("squircle")
+  summary    String?  
+  firstName  String?
+  lastName   String? 
+  jobTitle   String? 
+  city       String?
+  country    String?
+  phone      String?
+  email      String?
+  ResumeContent       ResumeContent[]
+
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("resumes")
+}
+
+model ResumeContent{
+   id  String @id @default(cuid())
+   resumeId  String @unique
+   resume  Resume  @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+   
+   // resume data
+   skills  String[]  @default([])
+   socialData  Json[]  @default([])
+   projectDetails Json[] @default([])
+   experience Json[] @default([])
+   certifications Json[] @default([])
+   education Json[] @default([])
+
+  @@map("resume_content")
+}
+
+// resumecontent --->[
+//         {
+//           platform: "LinkedIn",
+//           url: "https://linkedin.com/in/username",
+//           username: "username",
+//         },
+//        ....
+//       ],
+// projectDetails ---> [
+//         {
+//           title: "sometjhign",
+//           url: "https://linkedin.com/in/username",
+//           start date: "234324",
+//           end date: "23423",
+//          "summary"
+//         },
+//        ....
+//       ],
+// certifications ---> [
+//         {
+//           title: "sometjhign",
+//           link:'asdasd'
+//           start date: "234324",
+//           end date: "23423",
+//         },
+//        ....
+//       ],
+// education ---> [
+//         {
+//           school_name: "sometjhign",
+//           start_date: "234324",
+//           end_date: "23423",
+//         },
+//        ....
+//       ],
